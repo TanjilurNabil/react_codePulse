@@ -10,7 +10,7 @@ const Register = () => {
         e.preventDefault();
         setMessage('');
         authService.register(email, password).then(() => {
-            navigate('/categories');
+            navigate('/login');
             window.location.reload();
         },
             (error) => {
