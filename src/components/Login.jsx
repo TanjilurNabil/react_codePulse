@@ -11,7 +11,7 @@ const Login = () => {
         e.preventDefault();
         setMessage('');
         authService.login(email, password).then(() => {
-            navigate('/welcome');
+            navigate('/categories');
             window.location.reload();
         },
             (error) => {

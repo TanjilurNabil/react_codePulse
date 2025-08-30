@@ -1,5 +1,7 @@
 import { Link, Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import Categories from './components/Categories';
 import Login from './components/Login';
+import ProtectedRoute from './components/ProtectedRoute';
 import Register from './components/Register';
 import authService from './services/authService';
 
@@ -17,7 +19,7 @@ const App = () => {
         <Link to="/">Home</Link> |
         {!currentUser && <Link to="/login">Login</Link>} |
       {!currentUser && <Link to="/register">Register</Link>} |
-        {currentUser && <h1>Hello {currentUser} Welcome!</h1>} |
+        {currentUser && <Link to="/categories">Categories</Link>} |
         { currentUser && <button onClick={handleLogout}>Logout</button>}
       </nav>
       <hr />
@@ -25,7 +27,11 @@ const App = () => {
         <Route path="/" element={<h2>Home Page</h2>} />
         <Route path="/login" element={<Login/>} />
         <Route path="/register" element={<Register/> } />
-        <Route path="/welcome" element={<h1>Welcome</h1> } />
+        <Route path="/categories" element={
+          <ProtectedRoute>
+            <Categories/>
+          </ProtectedRoute>
+         } />
       </Routes>
     </Router>
   );

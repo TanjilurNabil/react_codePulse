@@ -10,9 +10,10 @@ const login = (email, password) => {
     return axios.post(API_URL + 'login', { email, password })
         .then(response => {
             if (response.data && response.data.token) {
-                localStorage.setItem('email', JSON.stringify(response.data.email));
-                localStorage.setItem('token', JSON.stringify(response.data.token));
-                localStorage.setItem('roles', JSON.stringify(response.data.roles));
+                // localStorage.setItem('email', JSON.stringify(response.data.email));
+                // localStorage.setItem('token', JSON.stringify(response.data.token));
+                // localStorage.setItem('roles', JSON.stringify(response.data.roles));
+                localStorage.setItem('user', JSON.stringify(response.data));
             }
             return response.data;
         });
