@@ -104,7 +104,7 @@ const Categories = () => {
           <tr>
             <th style={{ width: "35%" }}>Name</th>
             <th style={{ width: "35%" }}>URL Handle</th>
-            <th style={{ width: "30%" }}>Actions</th>
+           {roles.includes("Writer") && <th style={{ width: "30%" }}>Actions</th>} 
           </tr>
         </thead>
         <tbody>
@@ -129,8 +129,9 @@ const Categories = () => {
                       onChange={(e) => setEditCategoryUrlHandle(e.target.value)}
                       required
                     />
-                  </td>
-                  <td>
+                          </td>
+                          {roles.includes("Writer") && (
+                              <td>
                     <form onSubmit={handleUpdate} className="d-flex gap-2">
                       <button type="submit" className="btn btn-success btn-sm">
                         Save
@@ -144,12 +145,15 @@ const Categories = () => {
                       </button>
                     </form>
                   </td>
+                          )}
+                  
                 </>
               ) : (
                 <>
                   <td>{category.name}</td>
                   <td>{category.urlHandle}</td>
-                  <td>
+                              {roles.includes("Writer") && (
+                                  <td>
                     <div className="d-flex gap-2">
                       <button
                         className="btn btn-info btn-sm"
@@ -169,6 +173,7 @@ const Categories = () => {
                       </button>
                     </div>
                   </td>
+                )}
                 </>
               )}
             </tr>

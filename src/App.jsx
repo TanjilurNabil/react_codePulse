@@ -1,5 +1,7 @@
-import { Link, Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import BlogHome from './components/BlogHome';
 import Categories from './components/Categories';
+import Header from './components/Header';
 import Login from './components/Login';
 import ProtectedRoute from './components/ProtectedRoute';
 import Register from './components/Register';
@@ -15,16 +17,17 @@ const App = () => {
   return (
     
     <Router>
-      <nav>
+      <Header user={ currentUser} onLogout = {handleLogout} />
+      {/* <nav>
         <Link to="/">Home</Link> |
         {!currentUser && <Link to="/login">Login</Link>} |
       {!currentUser && <Link to="/register">Register</Link>} |
         {currentUser && <Link to="/categories">Categories</Link>} |
         { currentUser && <button onClick={handleLogout}>Logout</button>}
-      </nav>
-      <hr />
+      </nav> */}
+      <div className="container mt-4">
       <Routes>
-        <Route path="/" element={<h2>Home Page</h2>} />
+        <Route path="/" element={<BlogHome/>} />
         <Route path="/login" element={<Login/>} />
         <Route path="/register" element={<Register/> } />
         <Route path="/categories" element={
@@ -32,7 +35,8 @@ const App = () => {
             <Categories/>
           </ProtectedRoute>
          } />
-      </Routes>
+        </Routes>
+        </div>
     </Router>
   );
 };

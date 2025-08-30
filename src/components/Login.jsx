@@ -11,7 +11,7 @@ const Login = () => {
         e.preventDefault();
         setMessage('');
         authService.login(email, password).then(() => {
-            navigate('/categories');
+            navigate('/');
             window.location.reload();
         },
             (error) => {
@@ -21,15 +21,18 @@ const Login = () => {
     };
     return (
         <form onSubmit={hanldleLogin}>
-            <div>
+            <div className='form-group'>
                 <label>Email:</label>
-                <input type="text"value={email} onChange={(e)=>setEmail(e.target.value)} required/>
+                <input className='form-control' type="text"value={email} onChange={(e)=>setEmail(e.target.value)} required/>
             </div>
-            <div>
+            <div className='form-group'>
                 <label>Password:</label>
-                <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+                <input className='form-control' type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
             </div>
-            <button type='submit'>Login</button>
+            <div className='mt-2'>
+<button className='btn btn-primary ' type='submit'>Login</button>
+            </div>
+            
             {message && <div className='error'>{ message}</div> }
         </form>
     );
