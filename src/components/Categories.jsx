@@ -68,7 +68,7 @@ const Categories = () => {
             {/* Create form */}
             {roles.includes("Writer") && (
                 <form onSubmit={handleCreate} className="row g-2 mb-4">
-          <div className="col-md-4">
+            <div className="col-md-4">
             <input
               type="text"
               className="form-control"
